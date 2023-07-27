@@ -163,10 +163,12 @@ const CreateRecord = () => {
                                     }
                                 />
 
-                                <InputError
-                                    messages={errors?.imdbId}
-                                    className="mt-2"
-                                />
+                                {imdbId && (
+                                    <InputError
+                                        messages={errors?.imdbId}
+                                        className="mt-2"
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
