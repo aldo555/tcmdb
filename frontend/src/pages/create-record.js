@@ -163,7 +163,7 @@ const CreateRecord = () => {
                                     }
                                 />
 
-                                {imdbId && (
+                                {!title && (
                                     <InputError
                                         messages={errors?.imdbId}
                                         className="mt-2"
