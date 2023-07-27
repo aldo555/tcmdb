@@ -49,6 +49,11 @@ const Dashboard = () => {
                             </Link>
                         ))}
                     </ul>
+                    {movies.length < 1 &&
+                        <span className="text-gray-600">
+                            Nothing here yet
+                        </span>
+                    }
 
                     <h2 className="mt-12 mb-4 text-3xl font-semibold text-gray-900">Latest Series</h2>
                     <ul
@@ -60,6 +65,11 @@ const Dashboard = () => {
                             </Link>
                         ))}
                     </ul>
+                    {series.length < 1 &&
+                        <span className="text-gray-600">
+                            Nothing here yet
+                        </span>
+                    }
 
                     <div className="w-full h-px border-t border-gray-900 border-opacity-10 my-12" />
 

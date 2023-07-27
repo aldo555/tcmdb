@@ -67,7 +67,7 @@ const Search = ({ query, results }) => {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="mb-4 text-3xl font-semibold text-gray-900">Results for {searchQuery}</h2>
+                    <h2 className="mb-4 text-3xl font-semibold text-gray-900">{total} results for {searchQuery}</h2>
                     <ul
                         role="list"
                         className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -77,6 +77,11 @@ const Search = ({ query, results }) => {
                             </Link>
                         ))}
                     </ul>
+                    {records.length < 1 &&
+                        <span className="text-gray-600">
+                            Nothing to be found
+                        </span>
+                    }
                     {total > perPage && <nav className="flex items-center justify-between px-4 sm:px-0 mt-4">
                         <div className="-mt-px flex w-0 flex-1">
                             <button

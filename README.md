@@ -18,7 +18,10 @@ Generate application key
 php artisan key:generate
 ```
 
-Configure MySQL Database and update .env accordingly
+Configure MySQL Database and update .env accordingly. Also don't forget to add the OMDb key to your env.
+```
+OMDB_API_KEY="keygoeshere"
+```
 
 Run database migration
 ```
@@ -28,6 +31,11 @@ php artisan migrate
 Run the dev server
 ```
 php artisan serve
+```
+
+To run tests do
+```
+php artisan test
 ```
 
 ## Setting up the frontend
@@ -47,3 +55,5 @@ Run dev
 ```
 npm dev
 ```
+
+Everything is set up now, go to http://localhost:3000 and register an account.
