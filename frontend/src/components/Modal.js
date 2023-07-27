@@ -3,6 +3,12 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import Button from '@/components/Button'
 import SecondaryButton from '@/components/SecondaryButton'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+})
 
 const Modal = ({
     isOpen,
@@ -16,7 +22,7 @@ const Modal = ({
 }) => {
     return (
         <Transition.Root show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={onClose}>
+            <Dialog as="div" className={`relative z-10 ${inter.variable} font-sans`} onClose={onClose}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
