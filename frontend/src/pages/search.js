@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { useRecord } from '@/hooks/record'
 import { useRouter } from 'next/router'
 
-const Search = ({ query, results }) => {
+const Search = () => {
     const router = useRouter()
 
     const { globalSearch, globalSearchWithUrl } = useRecord()

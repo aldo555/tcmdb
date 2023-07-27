@@ -1,5 +1,15 @@
 import 'tailwindcss/tailwind.css'
+import { Inter } from 'next/font/google'
 
-const App = ({ Component, pageProps }) => <Component {...pageProps} />
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+})
 
-export default App
+export default function App({ Component, pageProps }) {
+    return (
+        <main className={`${inter.variable} font-sans`}>
+            <Component {...pageProps} />
+        </main>
+    )
+}

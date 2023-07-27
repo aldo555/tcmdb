@@ -6,16 +6,16 @@ use App\Models\Actor;
 use App\Models\Rating;
 use App\Models\Record;
 use App\Contracts\Omdb;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecordRequest;
 use App\Http\Requests\SearchRecordRequest;
+use Illuminate\Http\Response;
 
 class RecordController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() {
+    public function index(): Response {
         $movies = Record::select([
             'id',
             'imdbId',
@@ -73,7 +73,7 @@ class RecordController extends Controller
     /**
      * Search through all records
      */
-    public function globalSearch(string $searchQuery) {
+    public function globalSearch(string $searchQuery): Response {
         $records = Record::where('title', 'LIKE', '%' . $searchQuery . '%')
             ->orWhereHas('actors', function ($query) use ($searchQuery) {
                 $query->where('name', 'LIKE', '%' . $searchQuery . '%');
@@ -88,7 +88,7 @@ class RecordController extends Controller
     /**
      * Query the OMDb API by title for resource creation.
      */
-    public function search(SearchRecordRequest $request, Omdb $omdb) {
+    public function search(SearchRecordRequest $request, Omdb $omdb): Response {
         $records = $omdb->searchByTitle($request->input('title'), $request->input('page'));
 
         if (!$records) {
@@ -107,7 +107,7 @@ class RecordController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRecordRequest $request, Omdb $omdb) {
+    public function store(StoreRecordRequest $request, Omdb $omdb): Response {
         $data = $omdb->searchByImdbId($request->input('imdbId'));
 
         if (!$data) {
@@ -159,7 +159,7 @@ class RecordController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(string $id, Omdb $omdb) {
+    public function update(string $id, Omdb $omdb): Response {
         $record = Record::find($id);
 
         if (!$record) {
@@ -209,7 +209,7 @@ class RecordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {
+    public function destroy(string $id): Response {
         $record = Record::find($id);
 
         if (!$record) {

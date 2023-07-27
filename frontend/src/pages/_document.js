@@ -8,10 +8,9 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html>
+            <Html lang="en">
                 <Head>
-                    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <title>TCMDb</title>
                 </Head>
                 <body className="antialiased">
                     <Main />
