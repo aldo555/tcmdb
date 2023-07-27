@@ -307,7 +307,8 @@ const Record = () => {
                 isOpen={dialogOpen}
                 onClose={handleCloseDialog}
                 title={`Delete Record`}
-                action={deleteRecordRequest}>
+                action={deleteRecordRequest}
+                isWarning={true}>
                 Are you sure you want to delete{' '}
                 <span className="font-semibold">
                     {record.title}?
