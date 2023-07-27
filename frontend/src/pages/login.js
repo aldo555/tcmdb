@@ -118,7 +118,7 @@ const Login = () => {
 
                     <div className="flex items-center justify-end mt-4">
                         <Link
-                            href="/register"
+                            href="/"
                             className="underline text-sm text-gray-600 hover:text-gray-900">
                             Don't have an account?
                         </Link>
