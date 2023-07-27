@@ -10,52 +10,56 @@ export const useRecord = () => {
             return data
         } catch (error) {
             return {
-                message: error.response.data.message
+                message: error.response.data.message,
             }
         }
     }
 
-    const globalSearch = async (search) => {
+    const globalSearch = async search => {
         try {
-            const { data } = await axios.get(`/api/records/global-search/${search}`)
+            const { data } = await axios.get(
+                `/api/records/global-search/${search}`,
+            )
 
             return data
         } catch (error) {
             return {
-                message: error.response.data.message
+                message: error.response.data.message,
             }
         }
     }
 
-    const globalSearchWithUrl = async (url) => {
+    const globalSearchWithUrl = async url => {
         try {
             const { data } = await axios.get(url)
 
             return data
         } catch (error) {
             return {
-                message: error.response.data.message
+                message: error.response.data.message,
             }
         }
     }
 
-    const getRecord = async (imdbId) => {
+    const getRecord = async imdbId => {
         try {
             const { data } = await axios.get(`/api/records/${imdbId}`)
 
             return data
         } catch (error) {
             return {
-                message: error.response.data.message
+                message: error.response.data.message,
             }
         }
     }
 
-    const searchRecordInOmdb = async({ setErrors, page, title }) => {
+    const searchRecordInOmdb = async ({ setErrors, page, title }) => {
         setErrors([])
 
         try {
-            const { data } = await axios.get(`/api/records/search?title=${title}&page=${page}`)
+            const { data } = await axios.get(
+                `/api/records/search?title=${title}&page=${page}`,
+            )
 
             return {
                 message: data.message,
@@ -66,7 +70,7 @@ export const useRecord = () => {
             setErrors(error.response.data.errors)
 
             return {
-                message: error.response.data.message
+                message: error.response.data.message,
             }
         }
     }
@@ -80,7 +84,7 @@ export const useRecord = () => {
             const { data } = await axios.post('/api/records', props)
 
             return {
-                message: data.message
+                message: data.message,
             }
         } catch (error) {
             setErrors(error.response.data.errors)
@@ -117,7 +121,7 @@ export const useRecord = () => {
             const { data } = await axios.delete(`/api/records/${id}`)
 
             return {
-                message: data.message
+                message: data.message,
             }
         } catch (error) {
             return {

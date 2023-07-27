@@ -1,8 +1,8 @@
 import Navigation from '@/components/Layouts/Navigation'
 import { useAuth } from '@/hooks/auth'
-import Toastwind from '../Toastwind';
+import Toastwind from '../Toastwind'
 
-const AppLayout = ({ header, children }) => {
+const AppLayout = ({ children }) => {
     const { user } = useAuth({ middleware: 'auth' })
 
     return (

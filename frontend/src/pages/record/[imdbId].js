@@ -5,12 +5,16 @@ import { toast } from 'react-hot-toast'
 import { useRecord } from '@/hooks/record'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { StarIcon, TrophyIcon, ArrowPathIcon, TrashIcon } from '@heroicons/react/20/solid'
+import {
+    StarIcon,
+    TrophyIcon,
+    ArrowPathIcon,
+    TrashIcon,
+} from '@heroicons/react/20/solid'
 import Button from '@/components/Button'
 import useDialog from '@/hooks/dialog'
 import Modal from '@/components/Modal'
 import ApplicationLogo from '@/components/ApplicationLogo'
-
 
 const Record = () => {
     const router = useRouter()
@@ -73,7 +77,7 @@ const Record = () => {
         router.push('/dashboard')
     }
 
-    const getInitials = (name) => {
+    const getInitials = name => {
         if (!name) return ''
 
         const words = name.split(' ')
@@ -150,16 +154,20 @@ const Record = () => {
                                     </div>
 
                                     <div className="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0 flex items-center justify-center">
-                                        {record.poster && record.poster !== 'N/A' && <img
-                                            src={record.poster}
-                                            alt={`Poster of ${record.title}`}
-                                            className="rounded-lg drop-shadow-2xl"
-                                        />}
-                                        {(!record.poster || record.poster === 'N/A') &&
+                                        {record.poster &&
+                                            record.poster !== 'N/A' && (
+                                                <img
+                                                    src={record.poster}
+                                                    alt={`Poster of ${record.title}`}
+                                                    className="rounded-lg drop-shadow-2xl"
+                                                />
+                                            )}
+                                        {(!record.poster ||
+                                            record.poster === 'N/A') && (
                                             <div className="w-72 h-96 rounded-lg bg-slate-900 flex items-center justify-center drop-shadow-2xl">
                                                 <ApplicationLogo />
                                             </div>
-                                        }
+                                        )}
                                     </div>
 
                                     <div className="mt-8 lg:col-span-5">
@@ -206,22 +214,28 @@ const Record = () => {
                                                 <ul
                                                     role="list"
                                                     className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-2">
-                                                    {record.actors.map(actor => (
-                                                        <li
-                                                            key={actor.name}
-                                                            className="col-span-1 flex rounded-md shadow-sm">
-                                                            <div className="bg-blue-800 flex w-16 h-12 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white">
-                                                                {getInitials(actor.name)}
-                                                            </div>
-                                                            <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
-                                                                <div className="flex-1 truncate px-4 py-2 text-sm">
-                                                                    <span className="font-medium text-gray-900">
-                                                                        {actor.name}
-                                                                    </span>
+                                                    {record.actors.map(
+                                                        actor => (
+                                                            <li
+                                                                key={actor.name}
+                                                                className="col-span-1 flex rounded-md shadow-sm">
+                                                                <div className="bg-blue-800 flex w-16 h-12 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white">
+                                                                    {getInitials(
+                                                                        actor.name,
+                                                                    )}
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                    ))}
+                                                                <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                                                                    <div className="flex-1 truncate px-4 py-2 text-sm">
+                                                                        <span className="font-medium text-gray-900">
+                                                                            {
+                                                                                actor.name
+                                                                            }
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        ),
+                                                    )}
                                                 </ul>
                                             </div>
                                         )}
@@ -266,29 +280,43 @@ const Record = () => {
                                         {record && record.ratings.length > 0 && (
                                             <div className="mt-8 border-t border-gray-200 pt-8">
                                                 <dl className="divide-y divide-gray-100">
-                                                    {record.ratings.map(rating => (
-                                                        <div key={rating.source} className="py-2 sm:grid sm:grid-cols-3 sm:gap-4">
-                                                            <dt className="text-sm font-medium sm:col-span-2 text-gray-900">
-                                                                {rating.source}
-                                                            </dt>
-                                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
-                                                                {rating.value}
-                                                            </dd>
-                                                        </div>
-                                                    ))}
+                                                    {record.ratings.map(
+                                                        rating => (
+                                                            <div
+                                                                key={
+                                                                    rating.source
+                                                                }
+                                                                className="py-2 sm:grid sm:grid-cols-3 sm:gap-4">
+                                                                <dt className="text-sm font-medium sm:col-span-2 text-gray-900">
+                                                                    {
+                                                                        rating.source
+                                                                    }
+                                                                </dt>
+                                                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
+                                                                    {
+                                                                        rating.value
+                                                                    }
+                                                                </dd>
+                                                            </div>
+                                                        ),
+                                                    )}
                                                 </dl>
                                             </div>
                                         )}
 
                                         <div className="flex justify-between space-x-2 pt-8 mt-8 border-t border-gray-200">
-                                            <Button onClick={updateRecordRequest} className="w-full text-center">
+                                            <Button
+                                                onClick={updateRecordRequest}
+                                                className="w-full text-center">
                                                 <ArrowPathIcon
                                                     className="mr-1 h-4 w-4 text-blue-50"
                                                     aria-hidden="true"
                                                 />
                                                 Update Record
                                             </Button>
-                                            <Button onClick={handleOpenDialog} className="w-full text-center bg-red-700 hover:bg-red-800 active:bg-red-800 focus:border-red-900 ring-red-300">
+                                            <Button
+                                                onClick={handleOpenDialog}
+                                                className="w-full text-center bg-red-700 hover:bg-red-800 active:bg-red-800 focus:border-red-900 ring-red-300">
                                                 <TrashIcon
                                                     className="mr-1 h-4 w-4 text-red-50"
                                                     aria-hidden="true"
@@ -310,9 +338,7 @@ const Record = () => {
                 action={deleteRecordRequest}
                 isWarning={true}>
                 Are you sure you want to delete{' '}
-                <span className="font-semibold">
-                    {record.title}?
-                </span>
+                <span className="font-semibold">{record.title}?</span>
             </Modal>
         </AppLayout>
     )

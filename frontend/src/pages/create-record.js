@@ -4,7 +4,10 @@ import Button from '@/components/Button'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid'
+import {
+    ArrowLongLeftIcon,
+    ArrowLongRightIcon,
+} from '@heroicons/react/20/solid'
 import { useRef, useState, useEffect } from 'react'
 import { useRecord } from '@/hooks/record'
 import AppLayout from '@/components/Layouts/AppLayout'
@@ -127,7 +130,7 @@ const CreateRecord = () => {
         <AppLayout>
             <Head>
                 <title>TCMDb | New Record</title>
-        </Head>
+            </Head>
 
             <form
                 onSubmit={submitForm}
@@ -139,10 +142,9 @@ const CreateRecord = () => {
                                 By using IMDb ID
                             </h2>
                             <p className="mt-1 text-sm leading-6 text-gray-600">
-                                Create a new record by providing its
-                                respective IMDb ID. <br />
-                                All other data will be automatically filled
-                                in.
+                                Create a new record by providing its respective
+                                IMDb ID. <br />
+                                All other data will be automatically filled in.
                             </p>
                         </div>
 
@@ -174,14 +176,12 @@ const CreateRecord = () => {
                                 By using the title
                             </h2>
                             <p className="mt-1 text-sm leading-6 text-gray-600">
-                                Create a new record only by searching for
-                                its title. <br />
-                                After entering a title and hitting the
-                                search button below the input you will be
-                                able to pick the wanted record from a list
-                                of results. <br />
-                                All other data will be automatically filled
-                                in.
+                                Create a new record only by searching for its
+                                title. <br />
+                                After entering a title and hitting the search
+                                button below the input you will be able to pick
+                                the wanted record from a list of results. <br />
+                                All other data will be automatically filled in.
                             </p>
                         </div>
 
@@ -228,35 +228,51 @@ const CreateRecord = () => {
                                     />
                                 ))}
                             </ul>
-                            {results.length > 0 && <nav className="flex items-center justify-between px-4 sm:px-0 mt-4">
-                                <div className="-mt-px flex w-0 flex-1">
-                                    <button
-                                        type="button"
-                                        disabled={page === 1}
-                                        onClick={previousSearchPage}
-                                        className="inline-flex items-center pr-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:text-gray-300 disabled:hover:text-gray-300">
-                                        <ArrowLongLeftIcon
-                                            className={`mr-3 h-5 w-5 text-gray-400 ${page === 1 && 'text-gray-300'}`}
-                                            aria-hidden="true"
-                                        />
-                                        Previous
-                                    </button>
-                                </div>
-                                <div className="hidden md:-mt-px md:flex text-sm font-medium text-gray-700">Page {page}/{Math.ceil(totalResults / 10)}</div>
-                                <div className="-mt-px flex w-0 flex-1 justify-end">
-                                    <button
-                                        type="button"
-                                        disabled={page == Math.ceil(totalResults / 10)}
-                                        onClick={nextSearchPage}
-                                        className="inline-flex items-center pl-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:text-gray-300 disabled:hover:text-gray-300">
-                                        Next
-                                        <ArrowLongRightIcon
-                                            className={`ml-3 h-5 w-5 text-gray-400 ${page == Math.ceil(totalResults / 10) && 'text-gray-300'}`}
-                                            aria-hidden="true"
-                                        />
-                                    </button>
-                                </div>
-                            </nav>}
+                            {results.length > 0 && (
+                                <nav className="flex items-center justify-between px-4 sm:px-0 mt-4">
+                                    <div className="-mt-px flex w-0 flex-1">
+                                        <button
+                                            type="button"
+                                            disabled={page === 1}
+                                            onClick={previousSearchPage}
+                                            className="inline-flex items-center pr-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:text-gray-300 disabled:hover:text-gray-300">
+                                            <ArrowLongLeftIcon
+                                                className={`mr-3 h-5 w-5 text-gray-400 ${
+                                                    page === 1 &&
+                                                    'text-gray-300'
+                                                }`}
+                                                aria-hidden="true"
+                                            />
+                                            Previous
+                                        </button>
+                                    </div>
+                                    <div className="hidden md:-mt-px md:flex text-sm font-medium text-gray-700">
+                                        Page {page}/
+                                        {Math.ceil(totalResults / 10)}
+                                    </div>
+                                    <div className="-mt-px flex w-0 flex-1 justify-end">
+                                        <button
+                                            type="button"
+                                            disabled={
+                                                page ==
+                                                Math.ceil(totalResults / 10)
+                                            }
+                                            onClick={nextSearchPage}
+                                            className="inline-flex items-center pl-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:text-gray-300 disabled:hover:text-gray-300">
+                                            Next
+                                            <ArrowLongRightIcon
+                                                className={`ml-3 h-5 w-5 text-gray-400 ${
+                                                    page ==
+                                                        Math.ceil(
+                                                            totalResults / 10,
+                                                        ) && 'text-gray-300'
+                                                }`}
+                                                aria-hidden="true"
+                                            />
+                                        </button>
+                                    </div>
+                                </nav>
+                            )}
                         </div>
                     </div>
                 </div>

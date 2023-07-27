@@ -7,7 +7,7 @@ import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import ApplicationLogo from '@/components/ApplicationLogo'
 import LinkButton from '@/components/LinkButton'
-import { useState} from 'react'
+import { useState } from 'react'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -17,8 +17,16 @@ const Navigation = ({ user }) => {
     const router = useRouter()
 
     const navigation = [
-        { name: 'Dashboard', href: '/dashboard', current: router.pathname === '/dashboard' },
-        { name: 'New Record', href: '/create-record', current: router.pathname === '/create-record'  },
+        {
+            name: 'Dashboard',
+            href: '/dashboard',
+            current: router.pathname === '/dashboard',
+        },
+        {
+            name: 'New Record',
+            href: '/create-record',
+            current: router.pathname === '/create-record',
+        },
     ]
 
     const { logout } = useAuth()
@@ -29,8 +37,8 @@ const Navigation = ({ user }) => {
         router.push({
             pathname: '/search',
             query: {
-                searchQuery: searchQuery
-            }
+                searchQuery: searchQuery,
+            },
         })
     }
 
@@ -77,10 +85,15 @@ const Navigation = ({ user }) => {
                                                     placeholder="Search"
                                                     type="search"
                                                     onChange={event =>
-                                                        setSearchQuery(event.target.value)
+                                                        setSearchQuery(
+                                                            event.target.value,
+                                                        )
                                                     }
                                                     onKeyDown={event => {
-                                                        if (event.key === 'Enter') {
+                                                        if (
+                                                            event.key ===
+                                                            'Enter'
+                                                        ) {
                                                             event.preventDefault()
                                                             search()
                                                         }
@@ -151,7 +164,9 @@ const Navigation = ({ user }) => {
                                         </Transition>
                                     </Menu>
 
-                                    <LinkButton href="/create-record" className="ml-6 inline-flex items-center">
+                                    <LinkButton
+                                        href="/create-record"
+                                        className="ml-6 inline-flex items-center">
                                         <PlusIcon
                                             className="mr-1 h-4 w-4 text-blue-50"
                                             aria-hidden="true"
