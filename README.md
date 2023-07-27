@@ -56,4 +56,4 @@ Run dev
 npm dev
 ```
 
-Everything is set up now, go to http://localhost:3000 and register an account.
+Everything is set up! Now go to http://localhost:3000 and register an account.
