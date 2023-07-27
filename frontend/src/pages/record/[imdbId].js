@@ -171,7 +171,7 @@ const Record = () => {
                                     </div>
 
                                     <div className="mt-8 lg:col-span-5">
-                                        <div className="pointer-events-auto flex items-center gap-x-3 bg-yellow-100 border-2 border-opacity-25 border-amber-900 px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
+                                        <div className="pointer-events-auto flex items-center gap-x-3 bg-yellow-100 border-2 border-opacity-25 border-amber-900 px-6 py-2.5 rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
                                             <TrophyIcon
                                                 className="h-4 w-4 text-yellow-700"
                                                 aria-hidden="true"
