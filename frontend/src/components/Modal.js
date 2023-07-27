@@ -22,7 +22,10 @@ const Modal = ({
 }) => {
     return (
         <Transition.Root show={isOpen} as={Fragment}>
-            <Dialog as="div" className={`relative z-10 ${inter.variable} font-sans`} onClose={onClose}>
+            <Dialog
+                as="div"
+                className={`relative z-10 ${inter.variable} font-sans`}
+                onClose={onClose}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"

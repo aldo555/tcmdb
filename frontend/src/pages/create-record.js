@@ -123,6 +123,7 @@ const CreateRecord = () => {
             return
         }
 
+        setImdbId('')
         toast.success(message)
     }
 
